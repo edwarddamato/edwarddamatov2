@@ -16,7 +16,7 @@ const Nav = () => {
   const pathname = usePathname();
 
   return (
-    <Navbar>
+    <Navbar className="print:hidden">
       <NavbarBrand>
         <Link className="font-bold text-inherit" href="/">
           edwarddamato.com

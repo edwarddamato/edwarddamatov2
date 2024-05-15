@@ -5,46 +5,39 @@ import React from "react";
 
 export default function Home() {
   return (
-    <section className="p-24 py-8 flex flex-col gap-6">
+    <section className="print:p-4 p-24 py-8 flex flex-col gap-6">
       <header className="flex justify-between">
         <div>
           <h1 className="text-6xl">
-            Edward D&apos;Amato <sup className="">CV</sup>
+            Edward D&apos;Amato{" "}
+            <sup className="text-sm font-bold text-red-500">CV</sup>
           </h1>
           <ul className="flex gap-4">
-            <li className="contact online print">
+            <li className="text-sm">
               <a href="mailto:info@edwarddamato.com">info@edwarddamato.com</a>
             </li>
-            <li className="contact online print">
-              <a
-                href="http://www.edwarddamato.com"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                edwarddamato.com
-              </a>
-            </li>
-            <li className="contact online">
+            <li className="text-sm">
               <a
                 href="https://github.com/edwarddamato"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Github &raquo;
+                github.com/edwarddamato
               </a>
             </li>
-            <li className="contact online">
+            <li className="text-sm">
               <a
                 href="http://lnkd.in/rHMR2B"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                LinkedIn &raquo;
+                linkedin.com/in/edwarddamato
               </a>
             </li>
           </ul>
         </div>
         <Button
+          className="print:hidden"
           onClick={() => {
             window.print();
           }}
@@ -55,17 +48,14 @@ export default function Home() {
       <section id="printer-friendly"></section>
       <section id="summary">
         <h1 className="text-2xl font-semibold">Summary</h1>
-        <p className="text-base">
+        <p className="text-base print:text-sm">
           Currently working as a Senior Software Engineer at{" "}
-          <a
-            href="https://bulb.co.uk"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Bulb
+          <a href="https://pleo.io" target="_blank" rel="noopener noreferrer">
+            Pleo
           </a>
-          &nbsp;as a tech lead for the Comms Platform team, building Bulb&apos;s
-          in-house communications platform.
+          &nbsp;as part of the AI Enablement team, exploring how GenAI and LLMs
+          can be used within Pleo whilst also enabling other teams to leverage
+          such tech.
           <br />
           Experienced Software Engineer with a demonstrated history of working
           in the internet industry. Huge fan of clean code, close collaboration
@@ -77,8 +67,49 @@ export default function Home() {
         <h1 className="text-2xl font-semibold">Work Experience</h1>
         <h2 className="text-xl border-b-1">Industry</h2>
         <ol className="flex flex-col gap-4">
+          <li className="print:break-after-page">
+            <p className="text-sm">2022 - present</p>
+            <p>
+              <strong>Senior Software Engineer</strong>
+              &nbsp;&bull;&nbsp;
+              <a
+                href="https://www.pleo.io"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-500"
+              >
+                Pleo
+              </a>
+            </p>
+            <p className="text-sm">
+              <span className="text-xs font-semibold text-gray-600">
+                As part of the AI Enablement team:
+              </span>
+              <ol className="list-disc pl-4 mb-4">
+                {[
+                  `Built an internal version of ChatGPT for Pleo, including features such as anonymisation, leveraging of internal product knowledge and document upload. Main contributor to the frontend as well as major contributions to the Python and Kotlin backends.`,
+                  `Led and implemented Vendor Context project: a project that generates context about Pleo vendors using LLMs including using an evaluation matrix (also via LLMs) to evaluate generated content against a specific criteria.`,
+                  `Worked on various experiments and prototypes including generation of spend policies for Pleo customers as well as expense categorisation using voice recognition.`,
+                ].map((note, i) => (
+                  <li key={i}>{note}</li>
+                ))}
+              </ol>
+              <span className="text-xs font-semibold text-gray-600">
+                As part of the Content Localisation team:
+              </span>
+              <ol className="list-disc pl-4">
+                {[
+                  `Building together with another engineer in the team the localisation infrastructure (automations, processes) for Pleo across 10 different markets, across a set of products including web based apps, native mobile apps and communications.`,
+                  `Built an automated, resilient and queue-based end-to-end localisation workflow for customer communications at Pleo, enabling communication owners to request translations for communications via a click of a button within the CMS, with automated translations uploads back into the CMS once translations are ready.`,
+                  `Set up an event log pipeline for automated localisation processes/workflows, enabling the team to store events as they happen using Kafka/BigQuery; allowing the team to query such events to gather insights and metrics.`,
+                ].map((note, i) => (
+                  <li key={i}>{note}</li>
+                ))}
+              </ol>
+            </p>
+          </li>
           <li>
-            <p className="text-sm">2018 - present</p>
+            <p className="text-sm">2018 - 2022</p>
             <p>
               <strong>Senior Software Engineer</strong>
               &nbsp;&bull;&nbsp;
@@ -328,7 +359,7 @@ export default function Home() {
           </li>
         </ol>
       </section>
-      <section className="flex flex-col gap-4">
+      <section className="flex flex-col gap-4 print:break-after-page">
         <h1 className="text-2xl font-semibold">Education</h1>
         <ol className="flex flex-col gap-4">
           <li>
@@ -395,24 +426,30 @@ export default function Home() {
           </li>
         </ol>
       </section>
-      <section className="flex flex-col gap-4">
+      <section className="flex flex-col gap-4 print:break-after-page">
         <h1 className="text-2xl font-semibold">Skills</h1>
         <h2 className="text-xl border-b-1">Technical</h2>
         <p>
           Vast understanding of, and experience working with technologies,
           including:
         </p>
-        <ul className="list-disc pl-8">
-          <li>JavaScript (ECMAScript), DOM &amp; related APIs</li>
-          <li>TypeScript</li>
-          <li>Google Cloud & Kubernetes</li>
+        <ul className="list-disc pl-8 text-sm">
+          <li>TypeScript, JavaScript (ECMAScript), DOM &amp; related APIs</li>
+          <li>Python & Kotlin</li>
+          <li>
+            Microsoft Azure, Amazon Web Services, Google Cloud & Kubernetes
+          </li>
           <li>Docker & Dockerised applications</li>
           <li>
             Event and queue based architectures (using tools such as Redis,
-            Google Cloud Pub/Sub)
+            Google Cloud Pub/Sub, AWS SQS, Kafka)
           </li>
-          <li>Node.js (v8-v14)</li>
-          <li>CSS, CSS3, CSS preprocessors (SASS, LESS), Styled Components</li>
+          <li>IaaS, mainly using Terraform and tooling like Env0</li>
+          <li>Node.js</li>
+          <li>
+            CSS, CSS3, CSS preprocessors (SASS, LESS), Styled Components,
+            Tailwind
+          </li>
           <li>HTML5 and related APIs</li>
           <li>
             Various frameworks; including React, NextJS, MarkoJS, Angular,
@@ -425,24 +462,25 @@ export default function Home() {
           <li>Bundling and minification (Webpack, Lasso)</li>
           <li>Code transpilers (Babel, TypeScript)</li>
           <li>
-            RESTful & GraphQL APIs (design, implementation, documentation
-            (Swagger, JSDoc), Versioning
+            RESTful & GraphQL APIs (design, implementation, documentation),
+            Swagger, JSDoc, Versioning
           </li>
           <li>Relational databases primarily Postgres, MSSQL, MySQL</li>
           <li>
-            I have experience with numerous other libraries, tools and
-            frameworks related to the above including npm, Yarn, Ramda.js, Jest,
+            Experience with numerous other libraries, tools and frameworks
+            related to the above including pnpm, npm, Yarn, Ramda.js, Jest,
             Mocha, Cypress, Chai, sinon, Nightwatch.js, eslint/tslint,
-            Grunt/Gulp, prettier, nock, axios, Selenium, date-fns, momentjs
+            Grunt/Gulp, prettier, nock, axios, Selenium, date-fns, momentjs and
+            many more.
           </li>
         </ul>
         <p>
           Throughout the years, I have also worked with a wide range of
           programming languages and technologies, including C#/ASP.NET,
-          Microsoft Azure, Oracle, Mongo , Java and Scala.
+          Microsoft Azure, Oracle, Mongo, Java and Scala.
         </p>
         <h2 className="text-xl border-b-1">Practices and Methodologies</h2>
-        <ul className="list-disc pl-8">
+        <ul className="list-disc pl-8 text-sm">
           <li>
             Monitoring & alerting using tools such as DataDog, PagerDuty, Google
             Stackdriver, Sentry
@@ -467,7 +505,7 @@ export default function Home() {
           </li>
           <li>
             Build pipelines; most recently using CircleCI & GitHub Workflows;
-            experience with using Jenkins, Gitlab, TravisCI
+            experience with using Jenkins, Gitlab, TravisCI, Vercel
           </li>
           <li>
             Continous code quality inspection and static code analysis (mostly
@@ -480,7 +518,7 @@ export default function Home() {
             retrospective, planning and refinement sessions)
           </li>
           <li>Security (OWASP Top 10)</li>
-          <li>Measuring impact through data;</li>
+          <li>Measuring impact through data</li>
         </ul>
       </section>
       <section className="flex flex-col gap-4">
@@ -537,15 +575,15 @@ export default function Home() {
       <section className="flex flex-col gap-4">
         <h1 className="text-2xl font-semibold">Professional interests</h1>
         <p>
-          Simplicity, functional programming, open source, give back to the
+          Simplicity, functional programming, open source, giving back to the
           community through coding
         </p>
       </section>
       <section className="flex flex-col gap-4">
         <h1 className="text-2xl font-semibold">Personal interests</h1>
         <p>
-          Animals, environment, wildlife, sustainability and renewables,
-          Brazilian jiu-jitsu, football, interior design.
+          Animals, environment, sustainability and renewables, Brazilian
+          jiu-jitsu, football, DIY.
         </p>
       </section>
       <footer>
